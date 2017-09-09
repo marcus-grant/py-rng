@@ -1,0 +1,5 @@
+# don't include wordlists for security
+*wordlist*
+
+# misc OS crap
+*.DS_
