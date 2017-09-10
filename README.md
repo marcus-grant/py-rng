@@ -6,7 +6,7 @@ I have a fascination with [Claude Shannon](https://en.wikipedia.org/wiki/Claude_
 
 **TBD**
 
-# TODO
+## TODO
 - [x] Generate reasonably secure OS-sourced random numbers
 - [x] Create random wordlist strings
 - [x] Create ongoing jupyter notebook covering the analysis of utilities
