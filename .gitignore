@@ -1,5 +1,42 @@
 # don't include wordlists for security
-*wordlist*
+*wordlists/*
+
+# files used only as playgrounds have _play in them
+*_play*
 
 # misc OS crap
-*.DS_
+*.DS_*
+
+# jupyter stuff
+MANIFEST
+build
+dist
+_build
+docs/man/*.gz
+docs/source/api/generated
+docs/source/config.rst
+docs/gh-pages
+notebook/static/components
+notebook/static/style/*.min.css*
+notebook/static/*/js/built/
+notebook/static/*/built/
+notebook/static/built/
+notebook/static/*/js/main.min.js*
+notebook/static/lab/*bundle.js
+node_modules
+*.py[co]
+__pycache__
+*.egg-info
+*~
+*.bak
+.ipynb_checkpoints
+.tox
+\#*#
+.#*
+.coverage
+src
+
+config.rst
+
+/.project
+/.pydevproject
