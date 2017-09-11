@@ -1,6 +1,9 @@
 # don't include wordlists for security
 *wordlists/*
 
+# don't include large log files used for testing
+*logs/*
+
 # files used only as playgrounds have _play in them
 *_play*
 
