@@ -9,7 +9,7 @@
 # TODO: delete unnecessary modules and find a cleaner way to do system stuff
 from collections import Counter
 from functools import reduce
-from math import log10
+from math import log10 abs
 #import numpy as np # TODO: change self.numbers into a numpy array
 import optparse
 import os
@@ -40,6 +40,7 @@ class RandomNumbers(object):
             min: the minimum value of the numbers (inclusive)
             max: the maximum value of the numbers (inclusive)
             TODO: interval: (TBA) the interval between each possible number
+                - Validate min, max, count
     """
     def __init__(self, count=1, min=1, max=10):
         self.count  = count
@@ -89,7 +90,9 @@ class RandomNumbers(object):
         out_str = "Frequencies of Numbers:\n"
         out_str += "-----------------------\n"
         for x in freqs:
-            chars = 1 + int(log10(x[0]))
+            if x[0] > 0: chars = 1 + int(log10(x[0]))
+            elif x[0] < 0: chars = 2 + int(log10(abs(x[0])))
+            else: chars = 1
             out_str += "  "
             out_str += str(x[0]) + ":"
             padding = 8 - chars
@@ -100,9 +103,11 @@ class RandomNumbers(object):
         print(out_str)
 
     def print_stats(self):
+        # TODO: % diff from uniform dev
         print("mean: {:.2f}".format(self.avg))
-        print("pvariance: {:2f}".format(self.pvar))
-        print("p-std-dev: {:2f}".format(self.pstd_dev))
+        print("pvariance: {:.2f}".format(self.pvar))
+        print("p-std-dev: {:.2f}".format(self.pvar**0.5))
+        print("uniform-dev: {:.2f}".format(self.range/(12**0.5)))
         print("median: {}".format(self.med))
         self.print_frequency()
 
