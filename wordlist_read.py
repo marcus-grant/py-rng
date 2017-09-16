@@ -78,11 +78,13 @@ def read_file_lines(file):
     # TODO: Validate the file
     return file.readlines()
 
-def clean_word(dirty_word):
+def clean_word(dirty_word, pattern='[^a-zA-Z]'):
     """ Reads a single word string from unwanted characters
 
     Args:
         dirty_word (str): a string of a word that could have unwanted chars.
+        pattern (str): a string representing a regex pattern of chars to keep.
+            Defaults to only alphabetic english characters
     
     Returns:
         str: a string of a cleaned/filtered version of dirty_word
@@ -92,10 +94,27 @@ def clean_word(dirty_word):
         - Perform some classification algorithm to improve cleaning
         - GPGPU acceleration
     """
+    regex = re.compile(pattern)
+    return regex.sub('', dirty_word)
+
+def clean_words(dirty_words, pattern='[^a-zA-Z]'):
+    """ Reads a wordlist ( a list of strings ) & strips them of unwanted chars 
+    
+    Args:
+        dirty_words ([str]): a list of strings of words to strip of
+            unwanted characters.
+        pattern (str): a string representing a regex pattern of chars to keep.
+            Defaults to only alphabetic english characters
+
+    Returns:
+        [str]: a list of strings with only alphabetic characters
+    """
+    # setup the regex engine for the characters to strip
+    regex = compile(pattern)
+    return [regex.sub('', word) for word in dirty_words]
     
 
-def read_words(words_string=None, word_lines=None, 
-        words_file=None, words_path=None):
+def read_words(words, pattern='[^a-zA-Z]', isdebug=False):
     """ A flexible version of previous functions that 'intelligently'
         interprets the input source and returns a clean list of words
 
@@ -103,7 +122,12 @@ def read_words(words_string=None, word_lines=None,
         words (many datatypes): A data source of words that may or may not
         be either clean or an intelligible wordlist. Depending on how it
         gets interpreted, it will either return a clean list of words, or
-        throw exceptions
+        throw exceptions.
+        Valid types of 'words':
+            - A string representing a valid filepath
+            - A string containing several delimited words
+            - A python opened file of type '_io.TextIOWrapper'
+            - A list of strings of individual words
 
     Returns:
         [str]: A list of cleanly parsed word strings
@@ -116,6 +140,67 @@ def read_words(words_string=None, word_lines=None,
     # TODO: explore options of including non-alphas and remove only file indeces
     # this could be useful for creating, for example, 1337 $p3@k wordlists
     #trim_nonalpha = lambda s: re.sub('^[a-zA-z]',s)
+    # TODO: - determine if path string
+    #       - determine if wordlist string
+    #       - determine if file_stream
+    #       - determine if word list (ie [str] )
+    # TODO: do this quicklier than calling clean_word mutiple times
+    if isdebug:
+        print("[DEBUG]: in read_words():")
+        print("words={}, pattern={}".format(words, pattern))
+    # check for datatype
+    if isinstance(words, str):
+        # if string it could be either a path to a file
+        # or a long string containing delimited words
+        if path.isfile(words):
+            if isdebug:
+                print("[DEBUG]: in read_words(): words is valid path")
+            # it is a file path so treat it as one to return wordlist
+            return clean_words(read_file_lines(get_file(words)), pattern)
+        else:
+            if not isdebug:
+                print("[DEBUG]: in read_words(): words isn't valid path")
+            # TODO: check for common delimiters
+            #if so split string into list of words using most common one
+            print("[ERROR]: Interpretation of str delimiter not implemented")
+            exit(1)
+    elif type(words) == '_io.TextIOWrapper':
+        return clean_words(red_file_lines(words), pattern)
+    elif type(words) == 'list':
+        # check that it's a list of strings
+        if all(isinstance(n, str) for n in words):
+            return clean_words(words, pattern)
+        else:
+            print("[ERROR]: read_words() not a valid list of words")
+            print("======== read_words() needs a list of strings")
+            exit(1)
+    else:
+        print("[ERROR]: read_words() was given an invalid input type")
+        exit(1)
+
+
+def read_random_words(words, count=5, pattern='[^a-zA-Z]'):
+    """ From a valid collection (read Args: section) returns a list of
+    'count' number of random & cleaned (with pattern) words
+
+    Args:
+        words (object): words can be any of the valid data types from
+            read_words() function
+        count (int): the number of random words to pick from 'words' and clean
+        pattern (str): a string representing a regex pattern of valid chars
+
+    Returns:
+        [str]: a list of strings of cleaned, randomly selected words
+    """
+    # TODO: check arguments for type
+    # get words, using read_words()
+    # TODO: cleanup
+    words = read_words(words, pattern=pattern)
+    rand = rng.RandomNumbers(count=count, max=(len(words)-1))
+    rand_words = [words[x] for x in rand.numbers]
+    return rand_words
+    #return [read_words(words, pattern=pattern)[x] for 
+    #        x in rng.RandomNumbers(count=count, max=(len(words) - 1)).numbers]
 
 
 def search_word(pattern, words, case_sensitive=False):
@@ -192,5 +277,6 @@ if __name__ == '__main__':
             exit(1)
 
     # read in the wordlist
-    words = get_wordlist(words_path)
-    print(words)
+    # TODO: better formatting with options
+    for word in read_random_words(words_path, count=num_words):
+        print(word)
