@@ -95,7 +95,7 @@ def clean_word(dirty_word):
     
 
 def read_words(words_string=None, word_lines=None, 
-        words_file=None, words_path):
+        words_file=None, words_path=None):
     """ A flexible version of previous functions that 'intelligently'
         interprets the input source and returns a clean list of words
 
@@ -124,7 +124,7 @@ def search_word(pattern, words, case_sensitive=False):
     Args:
         pattern (str): a string pattern for the substring to be searched after.
         words ([str]): a list of words to search for 
-
+"""
 
 ################################################################################
 ## Main Execution
@@ -193,6 +193,4 @@ if __name__ == '__main__':
 
     # read in the wordlist
     words = get_wordlist(words_path)
-    print(str(words[:5]))
-
-"""
+    print(words)

@@ -9,7 +9,7 @@
 # TODO: delete unnecessary modules and find a cleaner way to do system stuff
 from collections import Counter
 from functools import reduce
-from math import log10 abs
+from math import log10
 #import numpy as np # TODO: change self.numbers into a numpy array
 import optparse
 import os
