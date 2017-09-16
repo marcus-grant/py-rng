@@ -1,4 +1,4 @@
-#! #!/usr/bin/env python
+#!/usr/bin/env python
 """ Python script that takes a given wordlist, uses a the rng.py script, then
     produces a string of a given number of words,
     thus creating a randomized word string.
@@ -60,7 +60,7 @@ def get_file(file_path):
         exit(1)
 
     # get the file
-    return = open(file_path, "r")
+    return open(file_path, "r")
 
 def read_file_lines(file):
     """ Reads opened wordlist file into lines & validates it as a file
@@ -195,4 +195,4 @@ if __name__ == '__main__':
     words = get_wordlist(words_path)
     print(str(words[:5]))
 
-
+"""
