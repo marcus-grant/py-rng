@@ -42,7 +42,7 @@ class RandomNumbers(object):
             TODO: interval: (TBA) the interval between each possible number
                 - Validate min, max, count
     """
-    def __init__(self, count=1, min=1, max=10):
+    def __init__(self, count=1, min=0, max=10):
         self.count  = count
         self.min    = min
         self.max    = max
