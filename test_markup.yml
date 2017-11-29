@@ -1,0 +1,75 @@
+passwords:
+  lastpass:
+    username: marcusfg@gmail.com
+    user-password: BooshFlopTendrilWigStand?
+    otp-recovery: lk4iwrnz.eifuo34Fj902j
+  google:
+    username: marcusfg
+    user-password: Same2ItemsAsB4@
+    security-question-answer: acton
+  facebook: 
+    username: mfg87
+    user-password: KasichIs@TwatNugget
+    otp-recovery: D6*f09sdJfuoaiwjcipq
+  apple:
+    id: marcusfg@gmail.com
+    password: WeveGotTheFunkGreg
+    recovery-code: Da0938fJF(*&$jhksa
+    extra-code: Dkjd02u29c20cu09culskj
+  github:
+    username: marcusfg@gmail.com
+    password: SeeYouInACoupleOfDays
+    otp-recovery: 068$j9fF89D$%&@jldaJAD
+  sia:
+    username: marcus-grant
+    password: FishermanSmokingTheirPipes
+    public-key: 7240577419a704cb438902df098e73098424dc89
+    private-key: 348068c208a098b0980d07098b0a0983edcdde02
+  dropbox:
+    username: marcusfg@gmail.com
+    password: 40Euro4ATripOnTheLake
+    otp-recovery: 1263Bc#767d90X*hfsaieufh
+  pattern-buffer:
+    ssh-private: GorillaTalksWithMuchLevity$
+    ssh-otp-recovery: j2Ki*jd)B3jdL9ENcwois$*(s
+    marcus-login: TenPiOneFifty
+    root-login: NabooIsAShaman
+    email-address: marcus.grant@patternbuffer.io
+    email-password: EelsAreGrossButHeLikesThem
+    email-otp-recovery: j40DssF09wfasd(8EW*D
+  digital-ocean:
+    login-password: BlueBookWhatIsThatCombover
+    otp-recovery: ndk39D*)(Ej08>?#dls@jkaj
+  coinbase:
+    username: marcus.grant@patternbuffer.io
+    password: OnTheSunnyDaysWellC
+    otp-recovery: 09412jlDS(*(dsjdkjl3
+  gemini:
+    username: marcusfg@gmail.com
+    password: ImBoredHaventYouCaughtAnythingYet?
+    otp-recovery: D890d2djWQENciasxcvegf
+  bittrex:
+    username: marcusfg@gmail.com
+    password: SingingWithBeerInTheBand
+    otp-recovery: DJw98c7#kjc(DJw
+  dropbox:
+    username: marcusfg@gmail.com
+    password: WeAintBeenFishing4YearsNow
+    otp-recovery: 12098DASwrournqRwu2
+  keepass:
+    password: WhatDidYouSayBoyBlackLake
+    otp-recovery: 2309DSjw9djoweui&Wdjkawo
+  devices:
+    jord:
+      marcus-password: INeedYourLoveALot
+      root-password: CMonNowBaby
+      luks-password: ICantBreatheWithYouAround
+    freyja:
+      marcus-password: INeedYourLoveALot
+      root-password: CMonNowBaby
+      luks-password: ICantBreatheWithYouAround
+    router:
+      marcus-password: INeedYourLoveALot
+      root-password: CMonNowBaby
+      ssid: FizzyInsideFunkJuice
+      wifi-password: pieceOfTheFunkBaby
